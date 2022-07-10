@@ -18,6 +18,7 @@ public class BooleanSearchEngine implements SearchEngine {
             for (File pdfFile : listPdfFiles) {
                 scan(pdfFile);
             }
+            index.values().forEach(Collections::sort);
         }
     }
 
@@ -46,9 +47,7 @@ public class BooleanSearchEngine implements SearchEngine {
 
     @Override
     public List<PageEntry> search(@NotNull String word) {
-        var pageEntryList = index.get(word.toLowerCase());
-        Collections.sort(pageEntryList);
-        return pageEntryList;
+        return index.get(word.toLowerCase());
     }
 
     private File @Nullable [] getListFiles(@NotNull File pdfsDir, String typeOfFile) {
