@@ -38,7 +38,7 @@ public class BooleanSearchEngine implements SearchEngine {
                             wordFrequency.getOrDefault(word.toLowerCase(), 0) + 1);
                 }
                 for (var entry : wordFrequency.entrySet()) {
-                    PageEntry pageEntry = new PageEntry(pdfFile.getName(), i, entry.getValue());
+                    var pageEntry = new PageEntry(pdfFile.getName(), i, entry.getValue());
                     addPageEntryToIndex(index, entry.getKey(), pageEntry);
                 }
             }
